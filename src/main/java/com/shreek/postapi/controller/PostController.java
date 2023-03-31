@@ -16,15 +16,15 @@ public class PostController {
     private PostRepo postRepo;
     @PostMapping
     public ResponseEntity<Post> addPost(@RequestBody Post post){
-        Post newpost = postRepo.insertPost(post.getTitle(), post.getBody(), post.getContent());
-
-        return new ResponseEntity<>(newpost, HttpStatus.CREATED);
+        int a = postRepo.insertPost(post.getTitle(), post.getBody(), post.getContent());
+        System.out.println(a);
+        return new ResponseEntity<>(post, HttpStatus.CREATED);
 
     }
-//    @GetMapping
-//    public List<Post> getAllPost(){
-//        return postRepo.getAllPost();
-//    }
+    @GetMapping
+    public List<Post> getAllPost(){
+        return postRepo.getAllPost();
+    }
 //
 //    @GetMapping("/{id}")
 //    public Optional<Post> getUserById(@PathVariable("id") int id){
